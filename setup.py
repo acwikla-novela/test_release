@@ -3,7 +3,7 @@ from os import environ
 from setuptools import setup, find_packages
 setup(
     name='test_release',
-    version={{ environ['VERSION'] }},
+    version='0.0.001',
     author='Aleksander Cwikla',
     url="https://github.com/acwikla-novela/test_release",
     packages=find_packages(),
