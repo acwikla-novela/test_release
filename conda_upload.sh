@@ -12,5 +12,10 @@ export CONDA_BLD_PATH=~/conda-bld
 export VERSION=`date +%Y.%m.%d`
 conda build .
 #ToDO Change date to version
-anaconda -t $CONDA_UPLOAD_TOKEN upload $CONDA_BLD_PATH/$OS/$PKG_NAME-`date +%Y.%m.%d`-0.tar.bz2 --force
+ls $CONDA_BLD_PATH
+echo "Converting conda package..."
+conda convert --platform all $CONDA_BLD_PATH/linux-64/$PKG_NAME-*.tar.bz2 --output-dir $CONDA_BLD_PATH/
+ls $CONDA_BLD_PATH
 
+echo "Deploying to Anaconda.org..."
+anaconda -t $CONDA_UPLOAD_TOKEN upload $CONDA_BLD_PATH/**/$PKG_NAME-*.tar.bz2 --force
