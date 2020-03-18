@@ -12,4 +12,4 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 script:
-  - pytest
+  - python -m pytest
