@@ -2,7 +2,7 @@
 PKG_NAME=test_release
 USER=acwikla-novela
 
-OS=$TRAVIS_OS_NAME-64
+OS=linux-64
 
 mkdir ~/conda-bld
 conda config --set anaconda_upload no
