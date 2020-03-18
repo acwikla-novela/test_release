@@ -45,6 +45,7 @@ if [ $branch = "master" ]; then
 	git pull
 
 	echo "Bye!"
+
 else
 	echo "Please make sure you are on master branch and come back!"
 	echo "Bye!"
