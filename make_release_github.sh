@@ -18,6 +18,7 @@ if [ $branch = "master" ]; then
 
 	# v1.0.0, v1.7.8, etc..
 	versionLabel=v$versionNumber
+	releaseBranchName=release_master
 
 	# establish tag name variables
 	tagName=$versionLabel
@@ -27,6 +28,7 @@ if [ $branch = "master" ]; then
 	# pull the latest version of the code from master
 	git pull
 
+  git commit -m $$$$$$$$$$$$$$$$$$$$$releaseBranchName
 	# create tag for new version from -master
 	git tag $tagName
 
@@ -50,3 +52,6 @@ else
 	echo "Please make sure you are on master branch and come back!"
 	echo "Bye!"
 fi
+
+
+sleep 30
