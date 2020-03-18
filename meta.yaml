@@ -1,4 +1,5 @@
 package:
+  name: test_release
   version: {{ environ['VERSION'] }}
 build:
   script_env:
