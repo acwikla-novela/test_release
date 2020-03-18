@@ -13,6 +13,7 @@ export CONDA_BLD_PATH=~/conda-bld
 export VERSION=123
 
 echo "Building conda package..."
+$PYTHON setup.py install --single-version-externally-managed --record=record.txt
 conda build .
 #ToDO Change date to version
 
