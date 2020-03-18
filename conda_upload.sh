@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Only need to change these two variables
 PKG_NAME=test_release
 USER=acwikla-novela

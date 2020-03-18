@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # current Git branch
 branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 
