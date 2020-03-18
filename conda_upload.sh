@@ -7,11 +7,15 @@ USER=acwikla-novela
 OS=$TRAVIS_OS_NAME-64
 
 mkdir ~/conda-bld
+
 conda config --set anaconda_upload no
 export CONDA_BLD_PATH=~/conda-bld
 export VERSION=123
+
+echo "Building conda package..."
 conda build .
 #ToDO Change date to version
+
 echo "bld"
 ls $CONDA_BLD_PATH/
 echo "linux"
