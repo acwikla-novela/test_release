@@ -36,7 +36,8 @@ after_success:
   - echo "lssss"
   - ls
   - conda build .
-  - ls
+  - ls build
+  - ls dist
   - ls $CONDA_BLD_PATH
   - conda convert --platform all $CONDA_BLD_PATH/linux-64/$PKG_NAME-$VERSION.tar.bz2 --output-dir $CONDA_BLD_PATH/
 
