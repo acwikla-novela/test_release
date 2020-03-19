@@ -1,5 +1,7 @@
 #!/bin/bash
 
+anaconda login
+
 # Only need to change these two variables
 PKG_NAME=test_release
 USER=acwikla-novela
@@ -13,6 +15,7 @@ export CONDA_BLD_PATH=~/conda-bld
 export VERSION=123
 
 echo "Building conda package..."
+cd $RECIPE_DIR/..  || exit
 $PYTHON setup.py install --single-version-externally-managed --record=record.txt
 conda build .
 #ToDO Change date to version
