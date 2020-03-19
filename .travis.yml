@@ -25,12 +25,16 @@ install:
   - python setup.py install
 #  - conda build your-conda-recipe
 #  - conda install your-package --use-local
+
 script:
   - pytest
-  -
+
 after_success:
+  - conda install conda-build
   - conda install anaconda-client
   - export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
+  - echo "lssss"
+  - ls
   - anaconda upload bld-dir/**/PACKAGENAME-*.tar.bz2
 
 #  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda_upload.sh
