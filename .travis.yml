@@ -32,9 +32,10 @@ script:
 after_success:
   - conda install conda-build
   - conda install anaconda-client
+  - conda install conda-verify
   - export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
   - conda build .
-  - CONDA_BLD_PATH = /home/travis/miniconda/envs/test-environment/conda-bld
+  - $CONDA_BLD_PATH = /home/travis/miniconda/envs/test-environment/conda-bld
   - ls $CONDA_BLD_PATH
   - ls $CONDA_BLD_PATH/linux-64
   - conda convert --platform all $CONDA_BLD_PATH/linux-64/$PKG_NAME-*.tar.bz2 --output-dir $CONDA_BLD_PATH/
