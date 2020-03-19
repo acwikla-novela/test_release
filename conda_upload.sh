@@ -18,9 +18,9 @@ $PYTHON setup.py install --single-version-externally-managed --record=record.txt
 conda build .
 #ToDO Change date to version
 
-echo "bld"
+echo "ls bld path"
 ls $CONDA_BLD_PATH/
-echo "linux"
+echo "ls linux-64"
 ls $CONDA_BLD_PATH/linux-64/
 echo "Converting conda package..."
 conda convert --platform all $CONDA_BLD_PATH/linux-64/$PKG_NAME-$VERSION.tar.bz2 --output-dir $CONDA_BLD_PATH/
