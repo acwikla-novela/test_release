@@ -21,7 +21,8 @@ if [ $branch == "master" ]; then
 	versionLabel=v$versionNumber
 	releaseBranch=master_release
 
-	# delete release_branch if exist, if not we get error, but that is ok
+  echo "Delete old $releaseBranch ....."
+	# delete local&remote release_branch if exist, if not we get error, but that is ok
   #	ToDo   git push origin --delete $releaseBranch not working!!!
   git branch -d master_release
   git push origin --delete master_release
