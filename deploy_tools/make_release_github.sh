@@ -4,7 +4,7 @@
 branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 
 # current project name
-projectName=$(git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p')
+projectName="$(git config --get remote.origin.url | cut -d/ -f5 | cut -d. -f1)"
 
 masterBranch=master
 
@@ -12,9 +12,8 @@ masterBranch=master
 git checkout $masterBranch
 
 # master branch validation
-if [ $branch = "master" ]; then
+if [ $branch == "master" ]; then
 	echo "Enter the release version number"
-
 	read versionNumber
 
 	# v1.0.0, v1.7.8, etc..
