@@ -8,15 +8,15 @@ conda config --set anaconda_upload no
 export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
 
 echo "Building conda package..."
-conda build .
+conda build . -q
 export CONDA_BUILD_PATH=/home/travis/miniconda/envs/test-environment/conda-bld
 
 echo "Converting conda package..."
-#conda convert --platform all $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
-#conda convert --platform {osx-64,linux-32,linux-64,win-32,win-64} $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
-#conda convert --platform {osx-64, linux-32, linux-64, win-32, win-64} $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
-#conda convert --platform osx-64,linux-32,linux-64,win-32,win-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
-conda convert --platform osx-64, linux-32, linux-64, win-32, win-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
+conda convert --platform osx-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH -q
+conda convert --platform linux-32 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH -q
+conda convert --platform linux-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH -q
+conda convert --platform win-32 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH -q
+conda convert --platform win-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH -q
 
 echo "Deploying to Anaconda.org..."
 anaconda upload $CONDA_BUILD_PATH/**/test_release-*.tar.bz2 --force
