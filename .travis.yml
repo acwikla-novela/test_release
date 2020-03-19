@@ -46,6 +46,6 @@ after_success:
   - ls $CONDA_BUILD_PATH/win-64
   - ls $CONDA_BUILD_PATH/osx-64
 
-  - anaconda upload $CONDA_BUILD_PATH/**/test_release-*.tar.bz2
+  - anaconda upload $CONDA_BUILD_PATH/**/test_release-*.tar.bz2 --force
 
 #  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda_upload.sh
