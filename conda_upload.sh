@@ -8,7 +8,6 @@ conda config --set anaconda_upload no
 export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
 
 echo "Building conda package..."
-cd deploy_tools
 conda build . -q
 export CONDA_BUILD_PATH=/home/travis/miniconda/envs/test-environment/conda-bld
 
