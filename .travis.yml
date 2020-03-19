@@ -22,11 +22,15 @@ install:
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - conda activate test-environment
 
-#  Line below replace: python setup.py install
-  - conda build your-conda-recipe
-  - conda install your-package --use-local
+  - python setup.py install
+#  - conda build your-conda-recipe
+#  - conda install your-package --use-local
 script:
   - pytest
   -
 after_success:
-  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda_upload.sh
+  - conda install anaconda-client
+  - export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
+  - anaconda upload bld-dir/**/PACKAGENAME-*.tar.bz2
+
+#  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda_upload.sh
