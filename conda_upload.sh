@@ -18,13 +18,13 @@ $PYTHON setup.py install --single-version-externally-managed --record=record.txt
 conda build .
 #ToDO Change date to version
 
-echo "ls bld path"
+printf "ls bld path"
 ls $CONDA_BLD_PATH/
-echo "ls linux-64"
+printf "ls linux-64"
 ls $CONDA_BLD_PATH/linux-64/
-echo "Converting conda package..."
+printf "Converting conda package..."
 conda convert --platform all $CONDA_BLD_PATH/linux-64/$PKG_NAME-$VERSION.tar.bz2 --output-dir $CONDA_BLD_PATH/
 ls $CONDA_BLD_PATH/linux-64/
 
-echo "Deploying to Anaconda.org..."
+printf "Deploying to Anaconda.org..."
 anaconda -t $CONDA_UPLOAD_TOKEN upload $CONDA_BLD_PATH/**/$PKG_NAME-$VERSION.tar.bz2 --force
