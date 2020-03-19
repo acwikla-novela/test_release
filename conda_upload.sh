@@ -18,7 +18,7 @@ $PYTHON setup.py install --single-version-externally-managed --record=record.txt
 conda build .
 #ToDO Change date to version
 
-echo 'ls \bld path\\'
+echo $'ls \bld path\\'
 ls $CONDA_BLD_PATH/
 printf "ls linux-64"
 ls $CONDA_BLD_PATH/linux-64/
