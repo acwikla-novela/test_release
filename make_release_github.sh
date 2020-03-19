@@ -6,8 +6,7 @@ branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 # current project name
 projectName=$(git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p')
 
-# establish master branch name variables
-masterBranch=$branch
+masterBranch=master
 
 # checkout to master branch, this will break if the user has uncommited changes
 git checkout $masterBranch
@@ -39,6 +38,15 @@ if [ $branch = "master" ]; then
 
 	# push tag to remote origin
 	git push --tags origin
+
+	# create the release branch from the -master branch
+  git checkout -b $releaseBranch $masterBranch
+
+	# checkout to master branch
+	git checkout $masterBranch
+
+  # push local releaseBranch to remote
+	git push -u origin $releaseBranch
 
 	echo "$versionLabel is successfully released for $projectName ...."
 
