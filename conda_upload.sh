@@ -15,8 +15,8 @@ echo "Converting conda package..."
 #conda convert --platform all $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
 #conda convert --platform {osx-64,linux-32,linux-64,win-32,win-64} $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
 #conda convert --platform {osx-64, linux-32, linux-64, win-32, win-64} $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
-conda convert --platform osx-64,linux-32,linux-64,win-32,win-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
-#conda convert --platform osx-64, linux-32, linux-64, win-32, win-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
+#conda convert --platform osx-64,linux-32,linux-64,win-32,win-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
+conda convert --platform osx-64, linux-32, linux-64, win-32, win-64 $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
 
 echo "Deploying to Anaconda.org..."
 anaconda upload $CONDA_BUILD_PATH/**/test_release-*.tar.bz2 --force
