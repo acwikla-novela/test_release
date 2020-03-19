@@ -18,7 +18,6 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 
-  # Replace dep1 dep2 ... with your dependencies
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - conda activate test-environment
 
@@ -30,22 +29,15 @@ script:
   - pytest
 
 after_success:
-  - conda install conda-build
-  - conda install anaconda-client
-  - conda install conda-verify
-  - export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
-  - export PKG_NAME=test_release
-  - export VERSION=0.0.001
-  - conda build .
-  - export CONDA_BUILD_PATH=/home/travis/miniconda/envs/test-environment/conda-bld
-#  - conda convert --platform all $CONDA_BUILD_PATH/linux-64/$PKG_NAME-$VERSION-py37_0.tar.bz2 --output-dir $CONDA_BUILD_PATH
-  - conda convert --platform all $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
+  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && conda install conda-verify && bash conda_upload.sh
+#  - conda install conda-build
+#  - conda install anaconda-client
+#  - conda install conda-verify
+#  - export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
+#  - export PKG_NAME=test_release
+#  - export VERSION=0.0.001
+#  - conda build .
+#  - export CONDA_BUILD_PATH=/home/travis/miniconda/envs/test-environment/conda-bld
+#  - conda convert --platform all $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
+#  - anaconda upload $CONDA_BUILD_PATH/**/test_release-*.tar.bz2 --force
 
-  - ls $CONDA_BUILD_PATH
-  - ls $CONDA_BUILD_PATH/linux-64
-  - ls $CONDA_BUILD_PATH/win-64
-  - ls $CONDA_BUILD_PATH/osx-64
-
-  - anaconda upload $CONDA_BUILD_PATH/**/test_release-*.tar.bz2 --force
-
-#  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda_upload.sh

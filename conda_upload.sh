@@ -1,31 +1,18 @@
 #!/bin/bash
 
-# Only need to change these two variables
-PKG_NAME=test_release
-USER=acwikla-novela
-VERSION=0.0.001
-
-OS=$TRAVIS_OS_NAME-64
-
-mkdir ~/conda-bld
+export PKG_NAME=test_release
+export VERSION=0.0.001
+# ToDo Version from script make_relase_github
 
 conda config --set anaconda_upload no
-export PKG_NAME=test_release
-export CONDA_BLD_PATH=~/conda-bld
-export VERSION=0.0.001
+export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
 
 echo "Building conda package..."
-#cd $RECIPE_DIR/..  || exit
 conda build .
-#ToDO Change date to version
+export CONDA_BUILD_PATH=/home/travis/miniconda/envs/test-environment/conda-bld
 
-echo "ls bld path"
-ls $CONDA_BLD_PATH/
-echo "ls linux-64"
-ls $CONDA_BLD_PATH/linux-64/
 echo "Converting conda package..."
-conda convert --platform all $CONDA_BLD_PATH/linux-64/$PKG_NAME-$VERSION.tar.bz2 --output-dir $CONDA_BLD_PATH/
-ls $CONDA_BLD_PATH/linux-64/
+conda convert --platform all $CONDA_BUILD_PATH/linux-64/***.tar.bz2 --output-dir $CONDA_BUILD_PATH
 
 echo "Deploying to Anaconda.org..."
-anaconda -t $CONDA_UPLOAD_TOKEN upload $CONDA_BLD_PATH/**/$PKG_NAME-$VERSION.tar.bz2 --force
+anaconda upload $CONDA_BUILD_PATH/**/test_release-*.tar.bz2 --force
