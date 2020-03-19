@@ -27,6 +27,9 @@ if [ $branch = "master" ]; then
 	# pull the latest version of the code from master
 	git pull
 
+	# delete release_branch if exist
+  git push origin --delete $releaseBranch
+
 	# create empty commit from master branch, create release_branch
 	git commit --allow-empty -m "Creating Branch $releaseBranch"
 
