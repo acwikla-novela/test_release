@@ -36,6 +36,6 @@ after_success:
   - echo "lssss"
   - ls
   - conda build .
-  - anaconda upload bld-dir/**/PACKAGENAME-*.tar.bz2
+  - anaconda upload bld-dir/**/test_release-*.tar.bz2
 
 #  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda_upload.sh
