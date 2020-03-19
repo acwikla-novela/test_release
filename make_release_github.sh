@@ -19,20 +19,20 @@ if [ $branch = "master" ]; then
 	read versionNumber
 
 	# v1.0.0, v1.7.8, etc..
+  export VERSION=$versionNumber
 	versionLabel=v$versionNumber
-	releaseBranchName=release_master
-
-	# establish tag name variables
-	tagName=$versionLabel
+	releaseBranch=master_release
 
 	echo "Started releasing $versionLabel for $projectName ....."
 
 	# pull the latest version of the code from master
 	git pull
 
-  git commit -m $$$$$$$$$$$$$$$$$$$$$releaseBranchName
+	# create empty commit from master branch, create release_branch
+	git commit --allow-empty -m "Creating Branch $releaseBranch"
+
 	# create tag for new version from -master
-	git tag $tagName
+	git tag $versionLabel
 
 	# push commit to remote origin
 	git push
@@ -55,5 +55,5 @@ else
 	echo "Bye!"
 fi
 
-
-sleep 30
+echo "Click something to exit"
+read someKey
