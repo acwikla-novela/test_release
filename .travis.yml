@@ -34,13 +34,12 @@ after_success:
   - conda install anaconda-client
   - export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
   - conda build .
-  - ls build/bdist
-  - ls build/bdist.linux-x86_64
+  - CONDA_BLD_PATH = /home/travis/miniconda/envs/test-environment/conda-bld
   - ls $CONDA_BLD_PATH
-  - conda convert --platform all build/bdist.linux-x86_64/$PKG_NAME-$VERSION.tar.bz2 --output-dir $CONDA_BLD_PATH/
-  - ls
-  - ls build
-  - ls build/bdist.linux-x86_64/
+  - ls $CONDA_BLD_PATH/linux-64
+  - conda convert --platform all $CONDA_BLD_PATH/linux-64/$PKG_NAME-*.tar.bz2 --output-dir $CONDA_BLD_PATH/
+
+  - ls $CONDA_BLD_PATH/linux-64
 
   - anaconda upload $CONDA_BLD_PATH/**/test_release-*.tar.bz2
 
