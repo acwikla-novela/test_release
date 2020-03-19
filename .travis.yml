@@ -37,7 +37,7 @@ after_success:
   - conda build .
   - ls /home/travis/miniconda/envs/test-environment/conda-bld
   - ls /home/travis/miniconda/envs/test-environment/conda-bld/linux-64
-  - conda convert --platform all /home/travis/miniconda/envs/test-environment/conda-bld/linux-64/$PKG_NAME-*.tar.bz2 --output-dir /home/travis/miniconda/envs/test-environment/conda-bld/
+  - conda convert --platform all /home/travis/miniconda/envs/test-environment/conda-bld/linux-64/$PKG_NAME-$VERSION-py.tar.bz2 --output-dir /home/travis/miniconda/envs/test-environment/conda-bld/
 
   - ls /home/travis/miniconda/envs/test-environment/conda-bld/linux-64
 
