@@ -1,7 +1,5 @@
 #!/bin/bash
-echo "login"
-anaconda login
-echo "login_end"
+
 # Only need to change these two variables
 PKG_NAME=test_release
 USER=acwikla-novela
