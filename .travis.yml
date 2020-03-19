@@ -35,13 +35,12 @@ after_success:
   - conda install conda-verify
   - export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
   - conda build .
-  - $CONDA_BLD_PATH = /home/travis/miniconda/envs/test-environment/conda-bld
-  - ls $CONDA_BLD_PATH
-  - ls $CONDA_BLD_PATH/linux-64
-  - conda convert --platform all $CONDA_BLD_PATH/linux-64/$PKG_NAME-*.tar.bz2 --output-dir $CONDA_BLD_PATH/
+  - ls /home/travis/miniconda/envs/test-environment/conda-bld
+  - ls /home/travis/miniconda/envs/test-environment/conda-bld/linux-64
+  - conda convert --platform all /home/travis/miniconda/envs/test-environment/conda-bld/linux-64/$PKG_NAME-*.tar.bz2 --output-dir /home/travis/miniconda/envs/test-environment/conda-bld/
 
-  - ls $CONDA_BLD_PATH/linux-64
+  - ls /home/travis/miniconda/envs/test-environment/conda-bld/linux-64
 
-  - anaconda upload $CONDA_BLD_PATH/**/test_release-*.tar.bz2
+  - anaconda upload /home/travis/miniconda/envs/test-environment/conda-bld/**/test_release-*.tar.bz2
 
 #  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda_upload.sh
