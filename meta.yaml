@@ -2,10 +2,10 @@ package:
   name: test_release
 #  version: {{ environ['VERSION'] }}
   version: 0.0.001
-script:
-  - python setup.py install --single-version-externally-managed --record=record.txt
 
-#build:
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
 #  script_env:
 #   - VERSION
 #   - CONDA_BLD_PATH
