@@ -3,9 +3,19 @@ package:
 #  version: {{ environ['VERSION'] }}
   version: 0.0.001
 
+source:
+  path: ../test_release
+
 build:
+  number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
+requirements:
+  build:
+    - python=3.7.4
+    - setuptools
+  run:
+    - python=3.7.4
 #  script_env:
 #   - VERSION
 #   - CONDA_BLD_PATH

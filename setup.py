@@ -1,6 +1,5 @@
-from os import environ
-
 from setuptools import setup, find_packages
+
 setup(
     name='test_release',
     version='0.0.001',
