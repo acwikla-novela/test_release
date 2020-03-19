@@ -34,7 +34,13 @@ after_success:
   - conda install anaconda-client
   - conda install conda-verify
   - export ANACONDA_API_TOKEN=$CONDA_UPLOAD_TOKEN
+  - export PKG_NAME=test_release
+  - export BLD_PATH=~/conda-bld
+  - echo $BLD_PATH
+  - export VERSION=0.0.001
   - conda build .
+  - export BLD_PATH=~/conda-bld
+  - echo $BLD_PATH
   - ls /home/travis/miniconda/envs/test-environment/conda-bld
   - ls /home/travis/miniconda/envs/test-environment/conda-bld/linux-64
   - conda convert --platform all /home/travis/miniconda/envs/test-environment/conda-bld/linux-64/$PKG_NAME-$VERSION-py37.0.tar.bz2 --output-dir /home/travis/miniconda/envs/test-environment/conda-bld/

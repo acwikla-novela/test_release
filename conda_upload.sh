@@ -10,8 +10,9 @@ OS=$TRAVIS_OS_NAME-64
 mkdir ~/conda-bld
 
 conda config --set anaconda_upload no
+export PKG_NAME=test_release
 export CONDA_BLD_PATH=~/conda-bld
-export VERSION=123
+export VERSION=0.0.001
 
 echo "Building conda package..."
 #cd $RECIPE_DIR/..  || exit
