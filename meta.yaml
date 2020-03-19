@@ -2,6 +2,9 @@ package:
   name: test_release
 #  version: {{ environ['VERSION'] }}
   version: 0.0.001
+script:
+  - python setup.py install --single-version-externally-managed --record=record.txt
+
 #build:
 #  script_env:
 #   - VERSION
