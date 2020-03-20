@@ -1,8 +1,11 @@
+version_file = open('VERSION')
+version = version_file.read().strip()
+
 language: python
 python:
   - "3.7.4"
 env:
-  - VERSION=0.0.001
+  - version
 install:
   - sudo apt-get update
 

@@ -1,8 +1,10 @@
 from setuptools import setup, find_packages
+version_file = open('VERSION')
+version = version_file.read().strip()
 
 setup(
     name='test_release',
-    version='0.0.001',
+    version=version,
     author='Aleksander Cwikla',
     url="https://github.com/acwikla-novela/test_release",
     packages=find_packages(),
