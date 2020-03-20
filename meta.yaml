@@ -1,7 +1,7 @@
 package:
   name: test_release
-#  version: {{ environ['VERSION'] }}
-  version: 0.0.001
+  version: {{ environ['VERSION'] }}
+#  version: 0.0.001
   # ToDo Version from script make_relase_github
 
 

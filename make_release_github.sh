@@ -13,11 +13,14 @@ git checkout $masterBranch
 
 # master branch validation
 if [ $branch == "master" ]; then
-	echo "Enter the release version number"
-	read versionNumber
+
+##  Type version
+#	echo "Enter the release version number"
+#	read versionNumber
+#  Version from EnvironmentVariable
+  versionNumber=$VERSION
 
 	# v1.0.0, v1.7.8, etc..
-  export VERSION=$versionNumber
 	versionLabel=v$versionNumber
 	releaseBranch=master_release
 
