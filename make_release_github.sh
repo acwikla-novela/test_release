@@ -18,7 +18,7 @@ if [ $branch == "master" ]; then
 #	echo "Enter the release version number"
 #	read versionNumber
 #  Version from file
-versionNumber=$(head -n 1 filename)
+versionNumber=$(head -n 1 VERSION)
 
 	# v1.0.0, v1.7.8, etc..
 	versionLabel=v$versionNumber
